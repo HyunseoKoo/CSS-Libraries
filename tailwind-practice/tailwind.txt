@@ -1,0 +1,37 @@
+* 설치방법
+1. npm install -D tailwindcss postcss autoprefixer
+2. npx tailwindcss init -p 
+3. tailwind.config.js 파일에 content에 경로 지정해주기 (아래는 디폴트)
+  ["./src/**/*.{js, jsx}"]
+4. index.css 파일에 tailwind 지정해주기
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+
+* 장점 (기존에 사용하던 styled-components와 비교)
+1. 태그(className)을 지정해주지 않아도 됨
+2. 파일 위아래로 왔다갔다 하지 않아도 되서 작성할 때 좀더 편리함
+3. 성능적으로 더 좋음. styled-components는 js를 컴파일해야해서 성능적으로는 좋지 않았는데 tailwindcss는 pure한 css로 성능 측면에서 더 좋음.
+4. 속성들이 단축어로 되어 있어서 코드를 좀더 간단하게 칠 수 있음
+
+
+* 단점
+1. 가독성이 안 좋음. 태그의 인라인으로 속성을 주기 때문에 컴포넌트 비즈니스 로직과 섞이면 가독성이 떨어짐.
+    보완) 외부 파일에 아래와 같이 관심사 분리할 수 있음.
+    @lay components {
+        .card-text {
+            @apply m-5 p-4 text-lg underline;
+        }
+    }
+2. 단축어를 외워야함
+3. 스타일 재사용이 어려움. 똑같은 스타일이어도 유지보수시 일괄적으로 수정하기 어려움
+
+
+* tailwindcss에서 제공하는 className
+Typography
+Spacing
+Colors
+Flex
+Grid
+반응형 ex) <p className="md:m-4">hi</p> -> 브라우저 폭 768px 이상에서만 m-4 적용됨
